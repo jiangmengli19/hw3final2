@@ -36,3 +36,18 @@ Now we try to make a plot to show the relationship between Height and Weight gen
 plot(biostatsdata$Height..in.,biostatsdata$Weight..lbs.,xlab = "Height",ylab = "Weight")
 ```
 Generally we can see there is some relation between two factors
+
+Now we try to run a simple linear model
+```{r runlinearmodel}
+fit <- lm(Weight..lbs. ~ Height..in. + Age, data = biostatsdata)
+summary(fit)
+y <- residuals(fit)
+mean(y)
+median(y)
+plot(fit)
+
+```
+Finally we do some analysis for our model. It can be seen generally the model fits. We
+can check the mean of residuals , it is `r mean(y)`. It is small. Apart from that, we can also see the median of residuals, it is `r median(y)`.It is also small. The result shows that weight may be related with age and height to some extent.  This is the analysis for linear regression part. 
+
+
