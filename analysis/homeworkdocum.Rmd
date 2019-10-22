@@ -1,0 +1,38 @@
+---
+title: "homeworkdocum"
+author: "jiangmengli19"
+date: "2019-10-21"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+## Introduction
+
+Firstly, we download a set of data from the website
+```{r importdataset}
+library(RCurl)
+download <- getURL("https://people.sc.fsu.edu/~jburkardt/data/csv/biostats.csv")
+biostatsdata <- read.csv(text = download)
+View(biostatsdata)
+
+```
+
+Secondly, We try to describe the data generally and choose "Height" and "Weight" column
+to give some description in detail
+
+```{r generaldescription}
+summary(biostatsdata)
+v1 <- biostatsdata[[4]]
+v2 <- biostatsdata[[5]]
+summary(v1)
+summary(v2)
+```
+
+Firstly, a general descriptive statistic for the dataset is presented.Then, there are two pieces of specific summary for the 'weight' column as well as 'Height' column.We can see the Mean of the height is 69.06 inch while the mean of the weight is 146.7lbs. Generally, this is a survey for the group of people aged between 23 years old and 53 years old.
+
+Now we try to make a plot to show the relationship between Height and Weight generally
+```{r plot}
+plot(biostatsdata$Height..in.,biostatsdata$Weight..lbs.,xlab = "Height",ylab = "Weight")
+```
+Generally we can see there is some relation between two factors
