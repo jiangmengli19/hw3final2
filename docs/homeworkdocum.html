@@ -489,10 +489,10 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrong95a0a9e"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> 95a0a9e </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrong603a801"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> 603a801 </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrong95a0a9e" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrong603a801" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -500,7 +500,6 @@ Great! You are using Git for version control. Tracking code development and conn
 <pre><code>
 Ignored files:
     Ignored:    .Rproj.user/
-    Ignored:    docs/figure/
 
 </code></pre>
 <p>
@@ -539,6 +538,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+603a801
+</td>
+<td>
+jiangmengli19
+</td>
+<td>
+2019-10-22
+</td>
+<td>
+we do the linear regression analysis part
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+95fb892
+</td>
+<td>
+jiangmengli19
+</td>
+<td>
+2019-10-22
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -600,7 +633,74 @@ summary(v1)</code></pre>
 <p>Firstly, a general descriptive statistic for the dataset is presented.Then, there are two pieces of specific summary for the ‘weight’ column as well as ‘Height’ column.We can see the Mean of the height is 69.06 inch while the mean of the weight is 146.7lbs. Generally, this is a survey for the group of people aged between 23 years old and 53 years old.</p>
 <p>Now we try to make a plot to show the relationship between Height and Weight generally</p>
 <pre class="r"><code>plot(biostatsdata$Height..in.,biostatsdata$Weight..lbs.,xlab = &quot;Height&quot;,ylab = &quot;Weight&quot;)</code></pre>
-<p><img src="figure/homeworkdocum.Rmd/plot-1.png" width="672" style="display: block; margin: auto;" /> Generally we can see there is some relation between two factors</p>
+<p><img src="figure/homeworkdocum.Rmd/plot-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-plot-1">
+Past versions of plot-1.png
+</button>
+</p>
+<div id="fig-plot-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+95fb892
+</td>
+<td>
+jiangmengli19
+</td>
+<td>
+2019-10-22
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Generally we can see there is some relation between two factors</p>
+<p>Now we try to run a simple linear model</p>
+<pre class="r"><code>fit &lt;- lm(Weight..lbs. ~ Height..in. + Age, data = biostatsdata)
+summary(fit)</code></pre>
+<pre><code>
+Call:
+lm(formula = Weight..lbs. ~ Height..in. + Age, data = biostatsdata)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-17.8297  -7.1605   0.7587   4.1605  22.1070 
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) -221.4740    58.8124  -3.766  0.00187 ** 
+Height..in.    5.1532     0.9567   5.386 7.56e-05 ***
+Age            0.3559     0.4448   0.800  0.43605    
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 11.47 on 15 degrees of freedom
+Multiple R-squared:  0.7717,    Adjusted R-squared:  0.7413 
+F-statistic: 25.35 on 2 and 15 DF,  p-value: 1.544e-05</code></pre>
+<pre class="r"><code>y &lt;- residuals(fit)
+mean(y)</code></pre>
+<pre><code>[1] 3.70243e-16</code></pre>
+<pre class="r"><code>median(y)</code></pre>
+<pre><code>[1] 0.7586687</code></pre>
+<pre class="r"><code>plot(fit)</code></pre>
+<p><img src="figure/homeworkdocum.Rmd/runlinearmodel-1.png" width="672" style="display: block; margin: auto;" /><img src="figure/homeworkdocum.Rmd/runlinearmodel-2.png" width="672" style="display: block; margin: auto;" /><img src="figure/homeworkdocum.Rmd/runlinearmodel-3.png" width="672" style="display: block; margin: auto;" /><img src="figure/homeworkdocum.Rmd/runlinearmodel-4.png" width="672" style="display: block; margin: auto;" /> Finally we do some analysis for our model. It can be seen generally the model fits. We can check the mean of residuals , it is 3.7024310^{-16}. It is small. Apart from that, we can also see the median of residuals, it is 0.7586687.It is also small. The result shows that weight may be related with age and height to some extent. This is the analysis for linear regression part.</p>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
