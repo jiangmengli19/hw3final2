@@ -11,4 +11,4 @@ editor_options:
 Welcome to my research website.
 This is Rmarkdown for homework3
 
-[homework documentfina](homeworkdocu.html)
+[homework documentfina](homeworkdocum.html)
